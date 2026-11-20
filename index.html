@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>오늘의 행운 뽑기</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;800&display=swap" rel="stylesheet">
+        <!-- CSS 파일 연결 -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body id="page">
+        <!-- 게임상자 -->
+        <div class="game">
+            <h1>💎오늘의 행운 뽑기💎</h1>
+            <p class="guide">버튼을 눌러 오늘의 운세를 뽑아보세요!</p>
+
+            <!-- 운세 카드 -->
+            <div class="fortune-card" id="fortuneCard">
+                <p class="fortune-emoji" id="fortuneEmoji">🎁</p>
+                <p class="fortune-title" id="fortuneTitle">아직 뽑지 않았어요</p>
+                <p class="fortune-message" id="fortuneMessage">아래 버튼을 눌러 보세요</p>
+            </div>
+            <!-- 행운의 색 / 행운의 숫자 -->
+            <div class="lucky-row">
+                <div class="lucky-box">
+                    <p>행운의 색</p>
+                    <p class="lucky-blaue">
+                        <span class="color-chip" id="colorChip"></span>
+                        <span id="colorName">-</span>
+                    </p>
+                </div>
+                <div class="lucky-box">
+                    <p class="lucky-label">행운의 숫자</p>
+                    <p class="lucky-value" id="luckyNumber">-</p>
+                </div>
+            </div>
+            <!-- 뽑기 버튼 -->
+             <button type="button" class="draw-btn" id="drawBtn">🎐운세 뽑기</button>
+             <p class="count-text" id="countText">지금까지 0번 뽑았어요.</p>
+        </div>
+
+        <!-- JavaScript 파일 연결 -->
+        <script src="js/script.js"></script>
+    </body>
+</html>

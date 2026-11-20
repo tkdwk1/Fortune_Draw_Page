@@ -1,0 +1,196 @@
+/* =========================================================
+   오늘의 행운 뽑기 — 스타일 (css/style.css)
+
+   목차
+     1. 색 변수 (:root)
+     2. 페이지 전체
+     3. 게임 상자와 제목
+     4. 운세 카드
+     5. 행운의 색 / 숫자
+     6. 뽑기 버튼
+
+   ※ 색은 모두 1번 구역의 변수로 만들어 두고, var(--이름) 으로 가져다 씁니다.
+      색을 바꾸고 싶으면 1번 구역의 값만 고치면 됩니다.
+   ========================================================= */
+
+/* =========================================================
+   1. 색 변수 (:root)
+   ========================================================= */
+:root {
+    --page-bg: #fff7e6;          /* 페이지 배경 (크림색) */
+    --white: #ffffff;            /* 흰색 (게임 상자, 버튼 글자) */
+    --card-bg: #f5efe6;          /* 운세 카드, 행운 상자 배경 */
+    --text-dark: #4a3a2a;        /* 진한 글자색 (제목) */
+    --text-mid: #5a4a3a;         /* 중간 글자색 (운세 설명) */
+    --text-soft: #7a6a5a;        /* 연한 글자색 (안내 글) */
+    --accent: #e8743b;           /* 포인트색 (뽑기 버튼) */
+    --accent-dark: #c95d28;      /* 포인트색 진한 것 (버튼 hover) */
+    --chip-default: #cccccc;     /* 행운의 색 동그라미 처음 색 */
+    --chip-ring: #d8cdbd;        /* 동그라미 바깥 테두리 */
+    --shadow: rgba(0, 0, 0, .12);/* 그림자 색 */
+}
+
+/* =========================================================
+   2. 페이지 전체
+   ========================================================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    padding: 2rem 1rem;
+    
+    /* ★ TODO 1. 여기에 입력하세요. (3줄)
+        ① 배경색을 변수 --page-bg (크림색) 로           
+        ② 안쪽 내용을 가로로 배치하는 방식으로        
+        ③ 안쪽 내용을 가로 가운데로 */
+    background-color: var(--page-bg);
+    display: flex;
+    justify-content: center;
+    /* ★ TODO 8. 여기에 입력하세요. (1줄)
+        뽑을 때마다 배경색이 바뀌는데, 0.5초 동안 부드럽게 바뀌도록  */
+    transition: background-color 0.5s;
+}
+
+/* =========================================================
+   3. 게임 상자와 제목
+   ========================================================= */
+.game {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    /* ★ TODO 2. 여기에 입력하세요. (4줄)
+        ① 배경색을 변수 --white (흰색) 로 
+        ② 모서리를 20px 만큼 둥글게 
+        ③ 안쪽 여백 위아래 1.8rem, 좌우 1.4rem
+        ④ 그림자  0 8px 24px 변수 --shadow  */
+    background-color: var(--white);
+    border-radius: 30px;
+    padding: 1.8rem 1.4rem;
+    box-shadow: 0 8px 24px var(--shadow);
+}
+
+h1 {
+    margin-bottom: .3rem;
+    /* ★ TODO 3. 여기에 입력하세요. (2줄)
+        ① 글자색을 변수 --text-dark (진한 갈색) 로 
+        ② 글자 크기 1.8rem  */
+    color: var(--text-dark);
+    font-size: 1.8rem;
+}
+
+.guide
+ {
+    color: var(--text-soft);
+    margin-bottom: 1.4rem;
+}
+
+/* =========================================================
+   4. 운세 카드
+   ========================================================= */
+.fortune-card {
+    border-radius: 18px;
+    padding: 1.6rem 1rem;
+    margin-bottom: 1.2rem;
+    background: var(--card-bg);
+    transition: background .5s;
+}
+
+.fortune-emoji {
+    line-height: 1.2;
+    /* ★ TODO 4. 여기에 입력하세요. (1줄)
+        이모지를 아주 크게, 글자 크기 5rem  */
+    font-size: 5rem;
+}
+
+.fortune-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: .3rem 0;
+}
+
+.fortune-message {
+    color: var(--text-mid);
+    line-height: 1.6;
+    min-height: 3rem;
+    white-space: pre-line;
+}
+
+/* =========================================================
+   5. 행운의 색 / 숫자
+   ========================================================= */
+.lucky-row {
+    margin-bottom: 1.2rem;
+    /* ★ TODO 5. 여기에 입력하세요. (2줄)
+        ① 안쪽 상자 두 개를 가로로 나란히 
+        ② 두 상자 사이의 간격 .8rem  */
+    display: flex;
+    gap: .8rem;
+    
+}
+
+.lucky-box {
+    flex: 1;
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: .8rem .4rem;
+}
+
+.lucky-label {
+    color: var(--text-soft);
+    font-size: .85rem;
+    margin-bottom: .3rem;
+}
+
+.lucky-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.color-chip {
+    display: inline-block;
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--chip-ring);
+    vertical-align: middle;
+    background: var(--chip-default);
+    /* ★ TODO 6. 여기에 입력하세요. (3줄)
+        ① 가로 크기 1.6rem  
+        ② 세로 크기 1.6rem  
+        ③ 모서리를 50% 둥글게 하면 동그라미가 됩니다  */
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+}
+
+/* =========================================================
+   6. 뽑기 버튼
+   ========================================================= */
+.draw-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    /* ★ TODO 7-1. 여기에 입력하세요. (4줄)
+        ① 배경색을 변수 --accent (주황) 로   
+        ② 글자색을 변수 --white (흰색) 로 
+        ③ 모서리 둥글게 14px  
+        ④ 마우스를 올리면 손가락 모양  */
+    background-color: var(--accent);
+    color: var(--white);
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+.draw-btn:hover {
+    /* ★ TODO 7-2. 여기에 입력하세요. (1줄)
+        마우스를 올렸을 때 배경색을 변수 --accent-dark (진한 주황) 로  */
+    background-color: var(--accent-dark);
+}
+
+.count-text {
+    margin-top: .9rem;
+    color: var(--text-soft);
+    font-size: .9rem;
+}
